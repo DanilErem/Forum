@@ -30,6 +30,7 @@
     border-color: white  white  white white;
     outline: none;
     -webkit-transition: box-shadow 0.25s;
+    background-color: white;
 
 }
 .regestration-input:focus{
@@ -37,9 +38,13 @@
     -moz-box-shadow: 0px 9px 5px -7px rgba(34, 60, 80, 0.6);
     box-shadow: 0px 9px 5px -7px rgba(34, 60, 80, 0.6);
 }
+.regestration-input[type="text"]{
+    outline: none;
+}
 .inputs-container{
     margin-top : 20%;
 }
+
 .login {
     position: relative;
     left : 50%;
