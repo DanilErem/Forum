@@ -2,6 +2,7 @@ let registrationPage = {
     nicknameInputText : "",
     passwordInputText : "",
     inputAttitude : "password",
+    passwordHideSrc : "image/regestration/hide.svg"
 }
 const CHANGE_NICKNAME_INPUT_TEXT_ACTION = "CHANGE_NICKNAME_INPUT_TEXT";
 const CHANGE_PASSWORD_INPUT_ACTION =  "CHANGE_PASSWORD_INPUT";
@@ -18,9 +19,11 @@ export function registrationReducer(state=registrationPage, action) {
         case CHANGE_VISIBLE_ACTION:
             if (state.inputAttitude === "password"){
                 state.inputAttitude = "text";
+                state.passwordHideSrc = "image/regestration/visible.svg";
             }
             else if (state.inputAttitude === "text"){
                 state.inputAttitude = "password";
+                state.passwordHideSrc = "image/regestration/hide.svg";
             }
         default:
             return  state;
