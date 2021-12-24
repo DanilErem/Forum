@@ -30,7 +30,7 @@ class Regestration extends React.Component {
                 <form className={"inputs-container"}>
                     <input  ref={this.nickNameInput} onChange={this.onNickNameChange.bind(this)} value={this.props.state.nicknameInputText} className={"regestration-input"} placeholder={"Nickname"}/>
                     <input name={"password"} ref={this.passwordInput} onChange={this.onPasswordChange.bind(this)} value={this.props.state.passwordInputText} type={this.props.state.inputAttitude} className={"regestration-input"} placeholder={"Password"} />
-                    <label className={"visible-password"} onClick={this.changeVisible.bind(this)} for={"password"}>H</label>
+                    <label className={"visible-password"} onClick={this.changeVisible.bind(this)} htmlFor={"password"}><img src={this.props.state.passwordHideSrc} alt={""}/></label>
                     <input className={"login"} type={"submit"} value={"Login"}/>
                 </form>
             </div>
