@@ -5,7 +5,7 @@ class Chat extends React.Component{
         return (
             <div className={"chat-container"}>
                 <div className={"chat-header"}>
-
+                    <p>Как пощитать масу зная плотность и объем ?</p>
                 </div>
             </div>
         )
