@@ -7,9 +7,8 @@ import Chats from "./Chats/Chats";
 function App() {
   return (
     <div className="App">
-      {/*<Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>*/}
-      <Navbar/>
-      <Chats/>
+      <Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>
+
     </div>
   );
 }
