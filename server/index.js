@@ -3,15 +3,18 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import router from './router/index.js'
+import errorMiddleware from './middlewares/errorMiddleware.js'
 
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
 const app = express()
 
-app.use('/api', router)
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
+app.use('/api', router)
+
+app.use(errorMiddleware)
 
 const start = async () => {
     try {
