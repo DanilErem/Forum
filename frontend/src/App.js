@@ -1,9 +1,9 @@
 import './App.css';
-import Regestration from "./Regestration/Regestration";
+import Regestration from "./Component/Regestration/Regestration";
 import React from "react";
 import store from "./store/store";
-import Navbar from "./Navbar/Navbar";
-import Chats from "./Chats/Chats";
+import Navbar from "./Component/Navbar/Navbar";
+import Chats from "./Component/Chats/Chats";
 function App() {
   return (
     <div className="App">
