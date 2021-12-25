@@ -1,6 +1,5 @@
 .chats-container{
     width: 100%;
     background-color: #fafafa;
-    position: relative;
-    top : 80px;
+    margin-top: 0;
 }
