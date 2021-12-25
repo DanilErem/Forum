@@ -7,13 +7,12 @@ import Chats from "./Component/Chats/Chats";
 import {Route, Routes} from "react-router";
 function App() {
   return (
-      <Routes>
+
     <div className="App">
       {/*<Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>*/}
       <Navbar/>
       <Chats chatePage={store.getState().chatsPage} dispatch={store.dispatch}/>
     </div>
-      </Routes>
   );
 }
 
