@@ -1,11 +1,24 @@
 import React from "react";
 import './Chats.css'
-import Chat from "./Chat/Chat";
 class Chats extends React.Component{
+    renderChatLink(chat){
+        return (
+            <div className={"chat-container"}>
+                <div className={"chat-header"}>
+                    <p>{chat.header}</p>
+                </div>
+            </div>
+        )
+    }
+    renderChatLinks(){
+        return this.props.chatePage.chats.map((chat)=>{
+            return this.renderChatLink(chat);
+        });
+    }
     render() {
         return (
             <div className={"chats-container"}>
-                <Chat/>
+                {this.renderChatLinks()}
             </div>
         );
     }
