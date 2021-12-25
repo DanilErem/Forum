@@ -5,7 +5,9 @@ class Navbar extends React.Component{
         return (
             <div className={"navbar-container"}>
                 <div className={"navbar-element"}>
+
                     <p className={"navbar-element-text"}>Chat</p>
+
                 </div>
             </div>
         );
