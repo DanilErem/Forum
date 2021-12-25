@@ -1,12 +1,13 @@
 import React from "react"
 import './Navbar.css'
+import {NavLink} from "react-router-dom";
 class Navbar extends React.Component{
     render() {
         return (
             <div className={"navbar-container"}>
                 <div className={"navbar-element"}>
 
-                    <p className={"navbar-element-text"}>Chat</p>
+                    <NavLink className={"navbar-element-text"}>Chat</NavLink>
 
                 </div>
             </div>
