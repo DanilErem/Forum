@@ -1,13 +1,19 @@
 import React from "react"
-import './Navbar.css'
+import './Navbar.css';
+import {Link} from "react-router-dom";
 class Navbar extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className={"navbar-container"}>
                 <div className={"navbar-element"}>
-
-                    <p className={"navbar-element-text"}>Chat</p>
-
+                    <Link to={"/chats"} className={"navbar-element-text"}>Чаты</Link>
+                </div>
+                <div className={"navbar-element"}>
+                    <Link to={"/my-chats"} className={"navbar-element-text"}>Мои чаты</Link>
                 </div>
             </div>
         );
