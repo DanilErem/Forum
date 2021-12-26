@@ -1,18 +1,20 @@
 import './App.css';
-import Regestration from "./Component/Regestration/Regestration";
 import React from "react";
 import store from "./store/store";
-import Navbar from "./Component/Navbar/Navbar";
 import Chats from "./Component/Chats/Chats";
-import {Route, Routes} from "react-router";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Regestration from "./Component/Regestration/Regestration";
+import Navbar from "./Component/Navbar/Navbar";
 function App() {
   return (
-
-    <div className="App">
-      {/*<Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>*/}
-      <Navbar/>
-      <Chats chatePage={store.getState().chatsPage} dispatch={store.dispatch}/>
-    </div>
+      <BrowserRouter location={""} navigator={""} history={""}>
+          <div className="App">
+               <Routes>
+                  <Route  path={"/"} element={<Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>}/>
+                   <Route path={"/chats"} element={<div><Navbar/><Chats dispatch={store.dispatch} chatPage={store.getState().chatsPage}/></div>}/>
+               </Routes>
+          </div>
+      </BrowserRouter>
   );
 }
 
