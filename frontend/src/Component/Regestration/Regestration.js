@@ -4,7 +4,8 @@ import {
     createChangeVisibleAction,
     createNickNameChangeTextAction,
     createPasswordChangeAction
-} from "../store/registration-reducer";
+} from "../../store/registration-reducer";
+
 class Regestration extends React.Component {
     constructor(props) {
         super(props);

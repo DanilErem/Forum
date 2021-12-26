@@ -11,7 +11,8 @@ class Chats extends React.Component{
         )
     }
     renderChatLinks(){
-        return this.props.chatePage.chats.map((chat)=>{
+        debugger;
+        return this.props.chatPage.chats.map((chat)=>{
             return this.renderChatLink(chat);
         });
     }
