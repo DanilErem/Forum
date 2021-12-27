@@ -27,4 +27,13 @@
     outline: none;
     font-size: 18px;
     resize: none;
+    border-radius: 0;
+    font-family: "Comic Sans MS";
+
+}
+.creator-chat-input:focus{
+    border-style: solid;
+    border-width: 3px;
+    border-color: lightskyblue;
+    border-radius: 5px;
 }
