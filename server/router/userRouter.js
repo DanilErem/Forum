@@ -8,6 +8,8 @@ const router = new Router()
 router.post('/registration', userController.registration)
 router.post('/login', userController.login)
 router.get('/check', authMiddleware, userController.check)
-router.get('/list', checkRoleMiddleLayer('ADMIN'), userController.list)
+router.get('/', checkRoleMiddleLayer('ADMIN'), userController.getAll)
+router.get('/:id', userController.getOne)
+router.delete('/:id', checkRoleMiddleLayer('ADMIN'), userController.delete)
 
 export default router
