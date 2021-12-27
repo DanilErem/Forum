@@ -30,7 +30,7 @@ function Chats (props){
     }
     function renderChatCreator() {
         if (props.chatPage.regime === ADD_CHAT_REGIME) {
-            return (<CreatorChat/>)
+            return (<CreatorChat chatCreator={props.chatPage.chatCreator} dispatch={props.dispatch}/>)
         }
     }
     return (
