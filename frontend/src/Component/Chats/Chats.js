@@ -1,27 +1,34 @@
 import React from "react";
 import './Chats.css'
-class Chats extends React.Component{
-    renderChatLink(chat){
+import {useNavigate} from "react-router-dom";
+
+function Chats (props){
+    let navigate = useNavigate();
+
+
+    function renderChatLink(chat){
+        function onClick() {
+            navigate(`/chats/${chat.id}`)
+        }
         return (
-            <div className={"chat-container"}>
-                <div className={"chat-header"}>
+            <div  onClick={onClick} className={"chat-link-container"}>
+                <div className={"chat-link-header"}>
                     <p>{chat.header}</p>
                 </div>
             </div>
         )
     }
-    renderChatLinks(){
-        debugger;
-        return this.props.chatPage.chats.map((chat)=>{
-            return this.renderChatLink(chat);
+    function renderChatLinks(){
+        return props.chatPage.chats.map((chat)=>{
+            return renderChatLink(chat);
         });
     }
-    render() {
+
         return (
             <div className={"chats-container"}>
-                {this.renderChatLinks()}
+                {renderChatLinks()}
             </div>
         );
-    }
+
 }
-export default Chats;
+export default (Chats);
