@@ -34,7 +34,7 @@ function Chats (props){
         }
     }
     return (
-        <div className={"chats-container"}>
+        <div className={""}>
             {renderChatLinks()}
             <button onClick={createAddChatWindow} className={"add-post-button"}/>
             {renderChatCreator()}
