@@ -1,12 +1,12 @@
 import React, {createRef} from "react";
-import './Regestration.css' // добавил коменты
+import './AuthPage.css' // добавил коменты
 import {
     createChangeVisibleAction,
     createNickNameChangeTextAction,
     createPasswordChangeAction
 } from "../../store/registration-reducer";
 
-class Regestration extends React.Component {
+class AuthPage extends React.Component {
     constructor(props) {
         super(props);
         this.nickNameInput = createRef();
@@ -27,7 +27,7 @@ class Regestration extends React.Component {
     render() {
         debugger;
         return (
-            <div className={"section"}>
+            <div className={"section authpage"}>
                 <div className="title">
                     Registration
                 </div>
@@ -37,10 +37,13 @@ class Regestration extends React.Component {
                         <input name={"password"} ref={this.passwordInput} onChange={this.onPasswordChange.bind(this)} value={this.props.state.passwordInputText} type={this.props.state.inputAttitude} placeholder={"Password"} />
                         <img className={"visible-password"} onClick={this.changeVisible.bind(this)} src={this.props.state.passwordHideSrc} alt={""}/>
                     </div>
-                    <button>Login</button>
+                    <div className="button-group">
+                        <button>Register</button>
+                        <a>Login</a>
+                    </div>
                 </div>
             </div>
         );
     }
 }
-export default Regestration;
+export default AuthPage;
