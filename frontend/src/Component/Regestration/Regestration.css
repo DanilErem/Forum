@@ -1,14 +1,13 @@
 .regestrarion-container{
     position: absolute;
-
-    top : 50%;
-    left : 50%;
+    /* позицианирование в таких случаия не используется  */
+    top : 50%;     /* Это тоже  */
+    left : 50%;     /* Это тоже  */
 
     width: 30%;
     height: 70%;
 
-    transform: translate(-50%, -50%);
-
+    transform: translate(-50%, -50%);    /* Это темболие  */
 
     background-color: #f5f5f5;
 
@@ -17,7 +16,7 @@
 
 }
 .regestration-input{
-    position: relative;
+    position: relative; /* Тут тоже самое  */
     left: 5px;
     width: calc(100% - 50px);
     margin-top: 15px;
@@ -47,10 +46,10 @@
 }
 
 .login {
-    position: relative;
+    position: relative; /* И тут  */
     left : 50%;
     top : 80%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* Тут особенно  */
     width: 180px;
     height: 50px;
     font-size: 18px;
