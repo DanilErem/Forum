@@ -39,6 +39,7 @@ let chatsPage = {
 };
 const CHANGE_REGIME_ACTION = "CHANGE_STATE_ACTION";
 const CHANGE_TEXT_ACTION = "CHANGE_TEXT";
+const ADD_CHAT_ACTION = "ADD_CHAT_ACTION";
 
 export function getCurrentChat(id){
     for (let chat of chatsPage.chats){
