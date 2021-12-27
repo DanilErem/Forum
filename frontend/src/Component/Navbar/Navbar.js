@@ -8,14 +8,15 @@ class Navbar extends React.Component{
 
     render() {
         return (
-            <div className={"navbar-container"}>
-                <div className={"navbar-element"}>
-                    <Link to={"/chats"} className={"navbar-element-text"}>Чаты</Link>
-                </div>
-                <div className={"navbar-element"}>
-                    <Link to={"/my-chats"} className={"navbar-element-text"}>Мои чаты</Link>
-                </div>
-            </div>
+            <header>
+                <nav>
+                    <Link className="logo" to={"/"}>OrleanForum</Link>
+                    <div className="nav-links">
+                        <Link to={"/chats"} className={"nav-link"}>Чаты</Link>
+                        <Link to={"/my-chats"} className={"nav-link"}>Мои чаты</Link>
+                    </div>
+                </nav>
+            </header>
         );
     }
 }

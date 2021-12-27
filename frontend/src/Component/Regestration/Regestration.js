@@ -27,13 +27,18 @@ class Regestration extends React.Component {
     render() {
         debugger;
         return (
-            <div className={"regestrarion-container"}>
-                <form className={"inputs-container"}>
-                    <input name={"nickname"}  ref={this.nickNameInput} onChange={this.onNickNameChange.bind(this)} value={this.props.state.nicknameInputText} className={"regestration-input"} placeholder={"Nickname"}/>
-                    <input name={"password"} ref={this.passwordInput} onChange={this.onPasswordChange.bind(this)} value={this.props.state.passwordInputText} type={this.props.state.inputAttitude} className={"regestration-input"} placeholder={"Password"} />
-                    <label className={"visible-password"} onClick={this.changeVisible.bind(this)} htmlFor={"password"}><img src={this.props.state.passwordHideSrc} alt={""}/></label>
-                    <input className={"login"} type={"submit"} value={"Login"}/>
-                </form>
+            <div className={"section"}>
+                <div className="title">
+                    Registration
+                </div>
+                <div className="main registration">
+                    <input name={"nickname"}  ref={this.nickNameInput} onChange={this.onNickNameChange.bind(this)} value={this.props.state.nicknameInputText} placeholder={"Nickname"}/>
+                    <div className="password-input">
+                        <input name={"password"} ref={this.passwordInput} onChange={this.onPasswordChange.bind(this)} value={this.props.state.passwordInputText} type={this.props.state.inputAttitude} placeholder={"Password"} />
+                        <img className={"visible-password"} onClick={this.changeVisible.bind(this)} src={this.props.state.passwordHideSrc} alt={""}/>
+                    </div>
+                    <button>Login</button>
+                </div>
             </div>
         );
     }
