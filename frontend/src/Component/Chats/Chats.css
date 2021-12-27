@@ -31,4 +31,39 @@
 .chat-link-header p {
     font-size: 20px;
     margin-top: 0;
+    text-decoration: underline;
+
+}
+.chat-link-header p:hover{
+    cursor : pointer;
+    color : #15151f;
+}
+.add-post-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-style: solid;
+    border-width: 0;
+}
+
+.add-post-button {background-image: linear-gradient(to right, #FC354C 0%, #0ABFBC  51%, #FC354C  100%)}
+.add-post-button {
+    margin: 10px;
+    /*padding: 15px 45px;*/
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 100%;
+    display: block;
+}
+
+.add-post-button:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
