@@ -1,5 +1,5 @@
 import React, {createRef} from "react";
-import './Regestration.css'
+import './Regestration.css' // добавил коменты
 import {
     createChangeVisibleAction,
     createNickNameChangeTextAction,
