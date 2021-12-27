@@ -14,7 +14,7 @@ function App() {
             <Routes>
                 <Route  path={"/"} element={<Regestration dispatch={store.dispatch} state={store.getState().registrationPage}/>}/>
                 <Route path={"/chats"} >
-                    <Route index element={<div><Navbar/><Chats dispatch={store.dispatch} chatPage={store.getState().chatsPage}/></div>}/>
+                    <Route index element={<Chats dispatch={store.dispatch} chatPage={store.getState().chatsPage}/>}/>
                     <Route path={":id"} element={<ChatContainer dispatch={store.dispatch} chatPage={store.getState().chatsPage}/>}/>
                 </Route>
             </Routes>
