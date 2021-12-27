@@ -61,6 +61,11 @@ export function chatsReducer(state = chatsPage, action) {
             return state;
     }
 }
+export function createPostAction(text) {
+    return {
+        
+    }
+}
 export function createChangeRegimeAction(REGIME) {
     return {
         regime : REGIME,
