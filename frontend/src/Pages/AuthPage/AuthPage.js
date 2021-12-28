@@ -2,8 +2,8 @@ import React, {createRef} from "react";
 import './AuthPage.css' // добавил коменты
 import {
     createChangeVisibleAction,
-    createNickNameChangeTextAction,
-    createPasswordChangeAction
+    createEmailChangeTextAction,
+    createPasswordChangeAction, createRegistrationAction
 } from "../../store/registration-reducer";
 
 class AuthPage extends React.Component {
@@ -13,7 +13,7 @@ class AuthPage extends React.Component {
         this.passwordInput = createRef();
     }
     onNickNameChange(){
-        let action = createNickNameChangeTextAction(this.nickNameInput.current.value);
+        let action = createEmailChangeTextAction(this.nickNameInput.current.value);
         this.props.dispatch(action);
     }
     changeVisible(){
@@ -24,8 +24,12 @@ class AuthPage extends React.Component {
         let action = createPasswordChangeAction(this.passwordInput.current.value);
         this.props.dispatch(action);
     }
+    onRegistration(){
+        let action = createRegistrationAction(this.nickNameInput.current.value, this.passwordInput.current.value);
+        this.props.dispatch(action);
+    }
+
     render() {
-        debugger;
         return (
             <div className={"section authpage"}>
                 <div className="title">
@@ -38,7 +42,7 @@ class AuthPage extends React.Component {
                         <img className={"visible-password"} onClick={this.changeVisible.bind(this)} src={this.props.state.passwordHideSrc} alt={""}/>
                     </div>
                     <div className="button-group">
-                        <button>Register</button>
+                        <button onClick={this.onRegistration.bind(this)}>Register</button>
                         <a>Login</a>
                     </div>
                 </div>
