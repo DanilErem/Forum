@@ -21,7 +21,7 @@ class CreatorChat extends React.Component{
                 <div className={"creator-chat-background"}/>
                 <div className={"creator-chat-container"}>
                     <textarea ref={this.textArea} onChange={this.onTextEnter.bind(this)} value={this.props.chatCreator.text} className={"creator-chat-input"}/>
-                    <button onClick={} className={"complete-post"}/>
+                    <button className={"complete-post"}/>
                 </div>
             </div>
 
