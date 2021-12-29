@@ -1,6 +1,11 @@
 import React, {createRef} from "react";
 import './CreatorChat.css';
-import {createAddChatAction, createChangeTextAction} from "../../../store/chats-reducer";
+import {
+    createAddChatAction,
+    createChangeRegimeAction,
+    createChangeTextAction,
+    VIEW_REGIME
+} from "../../../store/chats-reducer";
 class CreatorChat extends React.Component{
     constructor(props) {
         super(props);
@@ -18,7 +23,8 @@ class CreatorChat extends React.Component{
         this.props.dispatch(action);
     }
     close(){
-
+        let action = createChangeRegimeAction(VIEW_REGIME);
+        this.props.dispatch(action);
     }
 
     render() {
@@ -28,9 +34,11 @@ class CreatorChat extends React.Component{
                 <div className={"creator-chat-background"}/>
 
                 <div className={"creator-chat-container"}>
-                    <button className={"close-button"} onClick={this.on}/>
+                    <button className={"close-button"} onClick={this.close.bind(this)}/>
                     <textarea ref={this.textArea} onChange={this.onTextEnter.bind(this)} value={this.props.chatCreator.text} className={"creator-chat-input"}/>
-                    <button onClick={this.onButtonClick.bind(this)} className={"complete-post"}/>
+                    <button onClick={this.onButtonClick.bind(this)} className={"complete-post"}>
+
+                    </button>
 
                 </div>
             </div>
