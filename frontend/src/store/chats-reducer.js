@@ -90,9 +90,12 @@ function changeMessage(action, state) {
 }
 function createMessage(action, state) {
     let text = action.text;
-    getChatById(action.chatId).messages.push({
+    let chat = getChatById(action.chatId);
+    chat.messages.push({
         text  : text,
     });
+    chat.newMessageInput = "";
+
     return state;
 }
 
