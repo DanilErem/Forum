@@ -5,12 +5,18 @@ import {
     createEmailChangeTextAction,
     createPasswordChangeAction, createRegistrationAction
 } from "../../store/registration-reducer";
+import {getUsers} from "../../store/http/UserApi";
 
 class AuthPage extends React.Component {
     constructor(props) {
         super(props);
         this.nickNameInput = createRef();
         this.passwordInput = createRef();
+    }
+    componentDidMount() {
+        let data = getUsers().then(r=>{
+            console.log(r)
+        });
     }
     onNickNameChange(){
         let action = createEmailChangeTextAction(this.nickNameInput.current.value);
