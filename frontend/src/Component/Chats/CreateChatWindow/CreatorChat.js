@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import './CreatorChat.css';
-import {createChangeTextAction} from "../../../store/chats-reducer";
+import {createAddChatAction, createChangeTextAction} from "../../../store/chats-reducer";
 class CreatorChat extends React.Component{
     constructor(props) {
         super(props);
@@ -13,15 +13,25 @@ class CreatorChat extends React.Component{
             this.props.dispatch(action);
         }
     }
+    onButtonClick(){
+        let action = createAddChatAction(this.textArea.current.value);
+        this.props.dispatch(action);
+    }
+    close(){
+
+    }
 
     render() {
 
         return (
             <div>
                 <div className={"creator-chat-background"}/>
+
                 <div className={"creator-chat-container"}>
+                    <button className={"close-button"} onClick={this.on}/>
                     <textarea ref={this.textArea} onChange={this.onTextEnter.bind(this)} value={this.props.chatCreator.text} className={"creator-chat-input"}/>
-                    <button className={"complete-post"}/>
+                    <button onClick={this.onButtonClick.bind(this)} className={"complete-post"}/>
+
                 </div>
             </div>
 
