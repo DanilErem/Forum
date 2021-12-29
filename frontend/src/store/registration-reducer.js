@@ -30,7 +30,11 @@ export function registrationReducer(state=registrationPage, action) {
             }
             return state;
         case REGISTRATION_COMPLETE_ACTION:
-            registration(action.email, action.password).then(r => {});
+            registration(action.email, action.password).then(r => {
+                console.log(r);
+            });
+            return state;
+
 
         default:
             return  state;
