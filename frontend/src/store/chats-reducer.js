@@ -1,3 +1,5 @@
+
+
 export const VIEW_REGIME = "VIEW";
 export const ADD_CHAT_REGIME = "ADD_CHAT";
 let chatsPage = {
@@ -10,7 +12,8 @@ let chatsPage = {
                 {
                     text : "На 9:30",
                 }
-            ]
+            ],
+            newMessageInput : "",
         },
         {
             header : "Сколько будет 2 * 2 ?",
@@ -30,6 +33,7 @@ let chatsPage = {
                 }
             ],
             id : 1,
+            newMessageInput : "",
         }
     ],
     chatCreator : {
@@ -40,8 +44,10 @@ let chatsPage = {
 const CHANGE_REGIME_ACTION = "CHANGE_STATE_ACTION";
 const CHANGE_TEXT_ACTION = "CHANGE_TEXT";
 const ADD_CHAT_ACTION = "ADD_CHAT_ACTION";
+const CHANGE_MESSAGE_ACTION = "CHANGE_MESSAGE";
+const CREATE_MESSAGE_ACTION = "CREATE_MESSAGE";
 
-export function getCurrentChat(id){
+export function getChatById(id) {
     for (let chat of chatsPage.chats){
         if (chat.id === id){
             return chat;
@@ -53,26 +59,55 @@ function getFirstWord(string, wordCounter) {
     newString += "...";
     return newString;
 }
+
+function changeRegime(action, state) {
+    state.regime = action.regime;
+    return state;
+}
+function changeText(action, state) {
+    state.chatCreator.text = action.newText;
+    return  state;
+}
+function addChat(action, state) {
+    let header = getFirstWord(action.text, 30);
+    let newChat  = {
+        header : header,
+        text : action.text,
+        id : state.chats.length,
+        messages : [],
+        newMessageInput : "",
+
+    }
+    state.chatCreator.text = "";
+    state.regime = VIEW_REGIME;
+    state.chats.push(newChat);
+    return state;
+}
+function changeMessage(action, state) {
+    let chat = getChatById(action.chatId);
+    chat.newMessageInput = action.message;
+    return state;
+}
+function createMessage(action, state) {
+    let text = action.text;
+    getChatById(action.chatId).messages.push({
+        text  : text,
+    });
+    return state;
+}
+
 export function chatsReducer(state = chatsPage, action) {
     switch (action.type) {
         case CHANGE_REGIME_ACTION:
-            state.regime = action.regime;
-            return state;
+            return changeRegime(action, state);
         case CHANGE_TEXT_ACTION:
-            state.chatCreator.text = action.newText;
-            return  state;
+            return changeText(action, state)
         case ADD_CHAT_ACTION:
-            let header = getFirstWord(action.text, 30);
-            let newChat  = {
-                header : header,
-                text : action.text,
-                id : state.chats.length,
-                messages : [],
-            }
-            state.chatCreator.text = "";
-            state.regime = VIEW_REGIME;
-            state.chats.push(newChat);
-            return state;
+            return addChat(action, state);
+        case CHANGE_MESSAGE_ACTION:
+            return changeMessage(action, state)
+        case CREATE_MESSAGE_ACTION:
+            return createMessage(action, state);
         default:
             return state;
     }
@@ -95,3 +130,19 @@ export function createChangeTextAction(newText) {
         newText :  newText,
     }
 }
+export function createChangeMessageAction(message, chatId) {
+    return {
+        type : CHANGE_MESSAGE_ACTION,
+        message : message,
+        chatId : chatId,
+    }
+}
+export  function createCreateMessageAction(text, chatId){
+    return {
+        type : CREATE_MESSAGE_ACTION,
+        text : text,
+        chatId : chatId,
+    }
+}
+
+
