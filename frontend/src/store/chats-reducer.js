@@ -48,7 +48,11 @@ export function getCurrentChat(id){
         }
     }
 }
-
+function getFirstWord(string, wordCounter) {
+    let newString = string.slice(0, wordCounter);
+    newString += "...";
+    return newString;
+}
 export function chatsReducer(state = chatsPage, action) {
     switch (action.type) {
         case CHANGE_REGIME_ACTION:
@@ -57,13 +61,26 @@ export function chatsReducer(state = chatsPage, action) {
         case CHANGE_TEXT_ACTION:
             state.chatCreator.text = action.newText;
             return  state;
+        case ADD_CHAT_ACTION:
+            let header = getFirstWord(action.text, 30);
+            let newChat  = {
+                header : header,
+                text : action.text,
+                id : state.chats.length,
+                messages : [],
+            }
+            state.chatCreator.text = "";
+            state.regime = VIEW_REGIME;
+            state.chats.push(newChat);
+            return state;
         default:
             return state;
     }
 }
-export function createPostAction(text) {
+export function createAddChatAction(text) {
     return {
-        
+        type : ADD_CHAT_ACTION,
+        text : text,
     }
 }
 export function createChangeRegimeAction(REGIME) {
