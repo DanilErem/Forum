@@ -1,15 +1,16 @@
 import {registration} from "./http/UserApi";
-
-let registrationPage = {
-    emailInputText : "",
-    passwordInputText : "",
-    inputAttitude : "password",
-    passwordHideSrc : "image/regestration/hide.svg"
-}
 const CHANGE_NICKNAME_INPUT_TEXT_ACTION = "CHANGE_NICKNAME_INPUT_TEXT";
 const CHANGE_PASSWORD_INPUT_ACTION =  "CHANGE_PASSWORD_INPUT";
 const CHANGE_VISIBLE_ACTION = "CHANGE_VISIBLE";
 const REGISTRATION_COMPLETE_ACTION = "REGISTRATION_COMPLETE_ACTION";
+let registrationPage = {
+    emailInputText : "",
+    passwordInputText : "",
+    inputAttitude : "password",
+    passwordHideSrc : "image/regestration/hide.svg",
+    enterRegime : ""
+}
+
 export function registrationReducer(state=registrationPage, action) {
 
     switch (action.type) {
