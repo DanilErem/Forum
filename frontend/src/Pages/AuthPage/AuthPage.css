@@ -34,3 +34,9 @@ img.visible-password {
     width: 30px;
     height: 30px;
 }
+.button-group a:hover{
+    cursor: pointer;
+}
+.button-group button:hover{
+    cursor: pointer;
+}
