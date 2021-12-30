@@ -1,9 +1,10 @@
 import React, {createRef} from "react";
 import './AuthPage.css' // добавил коменты
 import {
+    createChangeRegistrationRegime,
     createChangeVisibleAction,
     createEmailChangeTextAction,
-    createPasswordChangeAction, createRegistrationAction
+    createPasswordChangeAction, createRegistrationAction, getButtonText, getLinkText, LOGIN_REGIME, REGISTRATION_REGIME
 } from "../../store/registration-reducer";
 import {getUsers} from "../../store/http/UserApi";
 
@@ -13,11 +14,7 @@ class AuthPage extends React.Component {
         this.nickNameInput = createRef();
         this.passwordInput = createRef();
     }
-    componentDidMount() {
-        let data = getUsers().then(r=>{
-            console.log(r)
-        });
-    }
+
     onNickNameChange(){
         let action = createEmailChangeTextAction(this.nickNameInput.current.value);
         this.props.dispatch(action);
@@ -34,6 +31,11 @@ class AuthPage extends React.Component {
         let action = createRegistrationAction(this.nickNameInput.current.value, this.passwordInput.current.value);
         this.props.dispatch(action);
     }
+    changeEnterRegime(){
+        let action = createChangeRegistrationRegime();
+        this.props.dispatch(action);
+    }
+
 
     render() {
         return (
@@ -48,8 +50,8 @@ class AuthPage extends React.Component {
                         <img className={"visible-password"} onClick={this.changeVisible.bind(this)} src={this.props.state.passwordHideSrc} alt={""}/>
                     </div>
                     <div className="button-group">
-                        <button onClick={this.onRegistration.bind(this)}>Register</button>
-                        <a>Login</a>
+                        <button onClick={this.onRegistration.bind(this)}>{getButtonText(this.props.state)}</button>
+                        <a  onClick={this.changeEnterRegime.bind(this)}>{getLinkText(this.props.state)}</a>
                     </div>
                 </div>
             </div>
