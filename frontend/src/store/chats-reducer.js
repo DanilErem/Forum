@@ -1,5 +1,3 @@
-
-
 export const VIEW_REGIME = "VIEW";
 export const ADD_CHAT_REGIME = "ADD_CHAT";
 let chatsPage = {
