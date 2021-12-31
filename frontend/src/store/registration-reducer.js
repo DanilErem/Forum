@@ -52,12 +52,20 @@ export function registrationReducer(state=registrationPage, action) {
             if (state.enterRegime === REGISTRATION_REGIME) {
                 registration(action.email, action.password).then(r => {
                     console.log(r);
+                }).catch(err=>{
+                    alert("Уже есть юзер с таким email");
                 });
             }
             else if (state.enterRegime === LOGIN_REGIME){
-                login(action.email, action.password).then(r => {
-                    console.log(r);
-                });
+                try {
+                    login(action.email, action.password).then((r) => {
+                        console.log(r);
+                    }).catch(err=>{
+                        alert("Неправильный логин или пароль");
+                    })
+                }
+                catch (e) {
+                }
             }
             return state;
         case CHANGE_REGISTRATION_REGIME_ACTION:
