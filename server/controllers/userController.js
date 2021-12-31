@@ -26,7 +26,7 @@ class UserController {
 
     async check(req, res, next) {
         try {
-            const {user} = req.body;
+            const user = req.user;
             const jwt = await userService.check(user);
 
             return res.json(jwt);

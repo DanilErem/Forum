@@ -21,7 +21,8 @@ class UserService {
     }
 
     async check(user) {
-        const token = jwt.sign({...user}, process.env.JWT_SECRET_KEY, {expiresIn: '1h'})
+        const userDto = new UserDto(user)
+        const token = jwt.sign({...userDto}, process.env.JWT_SECRET_KEY, {expiresIn: '1h'})
         return token;
     }
 

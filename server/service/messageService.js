@@ -10,7 +10,7 @@ class ChatService {
     }
 
     async delete(message_id) {
-        const message = await Message.findByIdAndDelete(message_id)
+        const message = await Message.findByIdAndDelete(message_id).populate('chat').populate('owner')
         if (!message) {
             throw ApiError.BadRequest(`Message by id: ${message_id} not found`)
         }
@@ -18,7 +18,7 @@ class ChatService {
     }
 
     async getOne(message_id) {
-        const message = await Message.findById(message_id)
+        const message = await Message.findById(message_id).populate('chat').populate('owner')
         if (!message) {
             throw ApiError.BadRequest(`Message by id: ${message_id} not found`)
         }
@@ -26,12 +26,12 @@ class ChatService {
     }
 
     async getAll() {
-        const messages = Message.find({})
+        const messages = Message.find({}).populate('chat').populate('owner')
         return messages
     }
 
     async getByUser(user_id) {
-        const messages = await Message.find({owner: user_id})
+        const messages = await Message.find({owner: user_id}).populate('chat').populate('owner')
         if (!messages) {
             throw ApiError.BadRequest(`Chats by user id: ${user_id} not found`)
         }
@@ -39,7 +39,7 @@ class ChatService {
     }
 
     async getByChat(chat_id) {
-        const messages = await Message.find({chat: chat_id})
+        const messages = await Message.find({chat: chat_id}).populate('chat').populate('owner')
         if (!messages) {
             throw ApiError.BadRequest(`Chats by user id: ${chat_id} not found`)
         }

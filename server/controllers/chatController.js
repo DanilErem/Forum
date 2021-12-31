@@ -24,7 +24,7 @@ class ChatController {
     async delete(req, res, next) {
         try {
             const {id} = req.params
-            const chat = await hatService.delete(id)
+            const chat = await chatService.delete(id)
             return res.json(chat)
         } catch(e) {
             next(e)
