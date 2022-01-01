@@ -38,9 +38,13 @@ function Chats (props){
         let action = createLoadChatsAction();
         props.dispatch(action);
     }
+    if (props.chatPage.chats.length === 0){
+        load();
+    }
+
     return (
 
-        <div className={""}>
+        <div>
             {renderChatLinks()}
             <button onClick={createAddChatWindow} className={"add-post-button"}/>
             {renderChatCreator()}
