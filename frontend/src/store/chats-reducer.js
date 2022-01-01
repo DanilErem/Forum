@@ -1,42 +1,15 @@
+import {create, getAll} from "./http/ChatsApi";
+
 export const VIEW_REGIME = "VIEW";
 export const ADD_CHAT_REGIME = "ADD_CHAT";
 let chatsPage = {
     chats : [
-        {
-            header : "Когда на отработку?",
-            text : "Извините, я очень хочу попасть на отработку, но увы я не знаю когда она. Можете пожалуйста сказать мне ?",
-            id : 0,
-            messages : [
-                {
-                    text : "На 9:30",
-                }
-            ],
-            newMessageInput : "",
-        },
-        {
-            header : "Сколько будет 2 * 2 ?",
-            text : "",
-            messages: [
-                {
-                    text : "ответ: блин, минимум 20 символов. если умножить\n" +
-                        "\n" +
-                        "(-2/3)^2\n" +
-                        "\n" +
-                        "4/9\n" +
-                        "\n" +
-                        "я не могу понять. 2 целые 1/3? или 2×1/3\n" +
-                        "\n" +
-                        "если 2 целые 1/3, то (-7/3)^2=49/9\n" +
-                        "\n",
-                }
-            ],
-            id : 1,
-            newMessageInput : "",
-        }
+
     ],
     chatCreator : {
         text : "",
     },
+    isLoad : false,
     regime : VIEW_REGIME,
 };
 const CHANGE_REGIME_ACTION = "CHANGE_STATE_ACTION";
@@ -44,6 +17,8 @@ const CHANGE_TEXT_ACTION = "CHANGE_TEXT";
 const ADD_CHAT_ACTION = "ADD_CHAT_ACTION";
 const CHANGE_MESSAGE_ACTION = "CHANGE_MESSAGE";
 const CREATE_MESSAGE_ACTION = "CREATE_MESSAGE";
+const LOAD_CHATS_ACTION = "LOAD_CHATS";
+
 
 export function getChatById(id) {
     for (let chat of chatsPage.chats){
@@ -74,11 +49,16 @@ function addChat(action, state) {
         id : state.chats.length,
         messages : [],
         newMessageInput : "",
-
     }
     state.chatCreator.text = "";
     state.regime = VIEW_REGIME;
     state.chats.push(newChat);
+    create(header, {
+        email: "gleb98808@@gmail.com",
+        password: "20061010p",
+    }).then(r =>{
+        console.log(r);
+    });
     return state;
 }
 function changeMessage(action, state) {
@@ -96,7 +76,23 @@ function createMessage(action, state) {
 
     return state;
 }
+function loadChats(action, state) {
+            getAll().then(r => {
+                state.chats = [];
+                for (let chat of r) {
+                    chat.text = "";
+                    chat.header = chat.title;
+                    chat.messages = [];
+                    chat.newMessageInput = "";
+                    state.chats.push(chat);
+                }
+            }).catch(err => {
+                console.log(err);
+            });
 
+
+    return state;
+}
 export function chatsReducer(state = chatsPage, action) {
     switch (action.type) {
         case CHANGE_REGIME_ACTION:
@@ -109,6 +105,8 @@ export function chatsReducer(state = chatsPage, action) {
             return changeMessage(action, state)
         case CREATE_MESSAGE_ACTION:
             return createMessage(action, state);
+        case LOAD_CHATS_ACTION:
+            return loadChats(action, state);
         default:
             return state;
     }
@@ -145,5 +143,8 @@ export  function createCreateMessageAction(text, chatId){
         chatId : chatId,
     }
 }
-
-
+export function createLoadChatsAction() {
+    return {
+        type : LOAD_CHATS_ACTION,
+    }
+}
