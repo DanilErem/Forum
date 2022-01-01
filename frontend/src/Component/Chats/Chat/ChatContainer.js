@@ -6,7 +6,7 @@ import React from "react";
 function ChatContainer (props){
     let params = useParams();
     function renderCurrentChat(){
-      let currentChat = getChatById(parseInt(params.id, 10));
+      let currentChat = getChatById(params.id);
       if (currentChat !== undefined){
           return <Chat dispatch={props.dispatch} chat={currentChat} />
        }
