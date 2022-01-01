@@ -52,13 +52,13 @@ function addChat(action, state) {
     }
     state.chatCreator.text = "";
     state.regime = VIEW_REGIME;
-    state.chats.push(newChat);
-    create(header, {
-        email: "gleb98808@@gmail.com",
-        password: "20061010p",
-    }).then(r =>{
-        console.log(r);
+
+    create(header, "61ccb1ae7a1f864d695a7479",
+    ).then(r =>{
+        newChat.id = r._id;
     });
+    console.log(newChat);
+    state.chats.push(newChat);
     return state;
 }
 function changeMessage(action, state) {
