@@ -18,7 +18,7 @@ class ChatService {
     }
 
     async getOne(chat_id) {
-        const chat = await Chat.findById(chat_id)
+        const chat = await Chat.findById(chat_id).populate('owner')
         if (!chat) {
             throw ApiError.BadRequest(`Chat by id: ${user} not found`).populate('owner')
         }
